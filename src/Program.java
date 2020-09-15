@@ -69,7 +69,6 @@ public class Program {
                         }
                     }
 
-                    //TODO: Add functionality to add multiple programs - although I don't think this changes much
                     else if(line.equalsIgnoreCase("add")){
 
                         title = getTitle();
@@ -86,7 +85,7 @@ public class Program {
                     }
 
                     else if(line.equalsIgnoreCase("exit")){
-                        System.out.println("---------------------------------------Goodbye-------------------------------");
+                        System.out.println("--------------------------------Goodbye----------------------------------");
                         break;
                     }
 
@@ -117,7 +116,7 @@ public class Program {
     public static ArrayList<String> pullPrograms(String priority, String status) throws IOException {
 
         ArrayList<String> result = new ArrayList<>();
-        String row = "";
+        String row;
         String[] data;
         int dataSize, priorityIndex, statusIndex, titleLastIndex;
 
