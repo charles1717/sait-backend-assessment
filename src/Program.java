@@ -161,7 +161,6 @@ public class Program {
         String[] inputData = {title, priority, status};
 
         String csvRow = creatCSVRow(inputData);
-        System.out.println(csvRow);
 
         FileWriter fileWriter = new FileWriter(workingFile, true);
         BufferedWriter csvWriter = new BufferedWriter(fileWriter);
@@ -211,6 +210,8 @@ public class Program {
 
         workingFile.delete();
         temporaryFile.renameTo(workingFile);
+
+        System.out.println(title + " was successfully deleted");
     }
     /*----------------------------------------------------------------------------------------------------------------*/
 
