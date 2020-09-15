@@ -1,7 +1,4 @@
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -61,11 +58,19 @@ class ProgramTest {
     }
 
     @org.junit.jupiter.api.Test
-    void addProgram() {
+    void addProgram() throws IOException {
+        Program.addProgram("Java Testing", "2", "Available");
+        boolean addProgramTest = searchFile("Java Testing");
+
+        assertEquals(true, addProgramTest);
     }
 
     @org.junit.jupiter.api.Test
-    void deleteProgram() {
+    void deleteProgram() throws IOException {
+        Program.deleteProgram("Java Testing");
+        boolean deleteProgramTest = searchFile("Java Testing");
+
+        assertEquals(false, deleteProgramTest);
     }
 
     @org.junit.jupiter.api.Test
@@ -89,5 +94,24 @@ class ProgramTest {
         File testFileFive = new File("programs_test_file.csv");
         boolean testCaseFive = testFileFive.exists();
         assertEquals(true, testCaseFive);
+    }
+
+    /*-----------------------------------------Helper Functions-------------------------------------------------------*/
+    private boolean searchFile(String title) throws IOException {
+        boolean found = false;
+        String row;
+
+        FileReader fileReader = new FileReader("programs_test_file.csv");
+        BufferedReader csvReader = new BufferedReader(fileReader);
+
+        while((row = csvReader.readLine()) != null) {
+            if(row.contains(title)){
+                found = true;
+                break;
+            }
+        }
+        csvReader.close();
+
+        return found;
     }
 }
