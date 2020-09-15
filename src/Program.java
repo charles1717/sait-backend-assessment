@@ -23,6 +23,15 @@ public class Program {
     private static File workingFile;
 
     /**
+     * Created this constructor to be able to run tests
+     *
+     * @param fileName - path or name of the file to use for the tests
+     */
+    public Program(String fileName) {
+        workingFile = new File(fileName);
+    }
+
+    /**
      * This is the method used to run the application
      * Important Notes:
      * 1. It is written to work on one file per session
@@ -126,9 +135,9 @@ public class Program {
             if(data[priorityIndex].equalsIgnoreCase(priority) && data[statusIndex].equalsIgnoreCase(status)) {
                 StringBuilder title = new StringBuilder(data[0]);
                 for(int i = 1; i <= titleLastIndex; i++){
-                    title.append(", ").append(data[i]);
+                    title.append(",").append(data[i]);
                 }
-                result.add(title.toString());
+                result.add(title.toString().trim());
             }
         }
 
